@@ -1,0 +1,14 @@
+body{
+    background-image:url(photo-1587279535322-b20697908487.avif) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+h2
+{
+    background: linear-gradient(to left,red,pink);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

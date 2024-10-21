@@ -1,0 +1,16 @@
+h1
+{
+    border-color: black;
+    border-top-style: dashed;
+    border-right: dotted;
+    border-left: dotted;
+    border-bottom: dotted;
+    border-left-width: 6px;
+}
+#p1 
+{
+    border-style:dashed;
+    border-width: 5px;
+    border-color: black;
+
+}

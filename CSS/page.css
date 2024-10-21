@@ -1,0 +1,16 @@
+.pagination{
+    text-align: center;
+}
+.pagination a{
+    color:red;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: inline-block;
+
+
+}
+.pagination a.active{
+    background-color: magenta;
+    font-weight: bold;
+    border-radius: 5px;
+}

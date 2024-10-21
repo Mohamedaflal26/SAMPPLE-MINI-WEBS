@@ -1,0 +1,36 @@
+a:link{
+    
+    color: deeppink;
+}
+a:visited
+{
+    color: olive;
+}
+a:hover
+{
+    color: aqua;
+}
+a:active
+{
+    color:blue
+}
+li:nth-child(even)
+{
+    background-color: violet;
+}
+li:nth-child(odd)
+{
+    background-color: lightpink;
+
+}
+h1{
+    text-shadow: 3px 3px 3px yellowgreen, -2px -2px 2px mediumseagreen;
+   
+}
+h1:hover
+{
+    box-shadow: 0px 5px 10px palevioletred;
+
+}
+/* we are using shadows for the text*/
+

@@ -1,0 +1,14 @@
+#box1
+{
+    border: 1px solid;
+    height: 300px;
+    background-color: azure;
+    width: 300px;
+}
+#box2
+{
+    border: 1px solid;
+    height: 200px;
+    background-color: rgb(83, 63, 20);
+    width: 200px;
+}

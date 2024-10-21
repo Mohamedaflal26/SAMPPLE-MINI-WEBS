@@ -1,0 +1,26 @@
+body 
+{
+    background-color: grey;
+
+}
+h1
+{
+    color: antiquewhite;
+}
+p
+{
+    color: rgb(210, 132, 7);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    text-decoration: dotted rgb(150, 44, 44);
+    font-size: larger;
+}
+#p1
+{
+    color: rgb(40, 11, 146);
+}
+.odd
+{
+    color: cornflowerblue;
+}
