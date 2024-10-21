@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HF-Solutions</title>
+    <script src="https://kit.fontawesome.com/1a1177b71e.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/jpg" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'Azonix';
+            src: url(fonts/AzonixRegular.woff2) format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Azonix', Arial, sans-serif;
+            margin: 0;
+            background: white;
+        }
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color:white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            animation: fadeInLogoText 3s ease forwards;
+        }
+
+        .company-logo {
+            width: 150px;
+            opacity: 0;
+            animation: fadeInLogo 2s ease forwards, glowLogo 2s ease forwards;
+        }
+
+        .logo-container h1 {
+            font-size: 4rem;
+            margin: 0;
+            opacity: 0;
+            animation: fadeInLogo 2s ease forwards;
+        }
+
+        @keyframes fadeInLogo {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowLogo {
+            0% {
+                filter: drop-shadow(0 0 2px #00ccff);
+            }
+            100% {
+                filter: drop-shadow(0 0 30px #00ccff);
+            }
+        }
+
+        @keyframes fadeInLogoText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #intermediate-page {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: black;
+            flex-direction: column;
+        }
+
+        .text-container {
+            position: relative;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInWelcome 2s ease forwards;
+        }
+
+        .slogan-text {
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fadeInSlogan 2s ease forwards 1s;
+            
+        }
+        .rounded-btn {
+            background-color:white;
+            color: black;
+            border: 2px solid black;
+            border-radius: 20%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            position: absolute;
+            margin-bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInButton 2s ease forwards 2s;
+        }
+
+        .rounded-btn:hover {
+            background-color: black;
+            border-color: white;
+            color: white;
+        }
+
+        @keyframes fadeInWelcome {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInSlogan {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInButton {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #main-content {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #main-content.slide-up {
+            opacity: 1;
+            animation: slideUpContent 1s ease-in-out;
+        }
+
+        @keyframes slideUpContent {
+            0% {
+                transform: translateY(20%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            gap: 60px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background-color:black;
+            color: white;
+            border: 1px solid rgb(245, 244, 224);
+            border-radius: 10px;
+            width: 30%;
+            margin-top: 80px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(245, 244, 224, 0.5);
+            text-align: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+        }
+
+        .box:hover:before {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        }
+
+        .box h2 {
+            margin-top: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .get-started-btn {
+            background-color: white;
+            color: black;
+            padding: 10px 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            font-size: 15px;
+        }
+
+        .get-started-btn:hover,
+        .box:hover .get-started-btn {
+            background-color: black;
+            border-color: white;
+            color:white;
+            
+        }
+
+        .box:hover {
+            border-color: balck;
+            box-shadow: 0 0 50px black;
+        }
+
+        .arrow-icon {
+            margin-left: 5px;
+        }
+
+        .explore-text {
+            background-color:black;
+            color:white;
+            position: absolute;
+            top: 1.5em;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 30px;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(245, 244, 224, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Company Logo" class="company-logo">
+            <h1>HellFrost Solutions</h1>
+        </div>
+    </div>
+
+    <div id="intermediate-page" style="display: none;">
+        <div class="text-container">
+            <h2 class="welcome-text">Welcome !</h2>
+            <br>
+            <h2  class="slogan-text" >Unlock your potential and accelerate your skills with HF-Solutions</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+          
+            <button id="to-homepage-btn" class="rounded-btn">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+    <div id="main-content" style="display: none;">
+        <div class="explore-text">Explore</div>
+        <div class="container">
+            <div class="box" style="background-image: url('assets/2.jpg')">
+                <h2>Risk Assessment</h2>
+                <a href="#" class="get-started-btn">
+                    Get Started <span class="arrow-icon"> <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </a>
+            </div>
+            <div class="box" style="background-image: url('assets/3.jpg')">
+                <h2>Skill Enhancement</h2>
+                <a href="#" class="get-started-btn">
+                    Get Started <span class="arrow-icon"> <i class="fa-solid fa-arrow-up-right-from-square"></i> </span>
+                </a>
+            </div>
+            <div class="box" style="background-image: url('assets/1.jpg')">
+                <h2>Career Boosting</h2>
+                <a href="#" class="get-started-btn">
+                    Get Started <span class="arrow-icon"> <i class="fa-solid fa-arrow-up-right-from-square"></i> </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').classList.add('fade-out');
+                setTimeout(function() {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('intermediate-page').style.display = 'flex';
+                }, 1000);
+            }, 3500);
+        });
+
+        document.getElementById('to-homepage-btn').addEventListener('click', function() {
+            document.getElementById('intermediate-page').style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex';
+            setTimeout(function() {
+                document.getElementById('main-content').classList.add('slide-up');
+            }, 100);
+        });
+    </script>
+    
+</body>
+</html>
